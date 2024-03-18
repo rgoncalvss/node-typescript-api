@@ -8,21 +8,31 @@ Set up the env file based on the .env.example.
 
 ## Installation
 
+```
 $ npm install
+```
 
+```
 $ docker compose up --build -d
+```
 
+```
 $ npx prisma migrate dev --name init
+```
 
 # Running the app
 
 ## Development
 
+```
 $ npm run dev
+```
 
 ## Unit tests
 
+```
 $ npm run test
+```
 
 ## Architecture:
 
