@@ -1,11 +1,9 @@
-// userRoutes.ts
-import express from "express";
-import { UserController } from "./../controllers/users.controller";
-//import { errorHandler } from "../utils/error-handler";
+import express from 'express';
+import usersController from '../controllers/users.controller';
 
-const userRouter = express.Router();
+const router = express.Router();
 
-userRouter.get("/users/:id", UserController.findById);
-userRouter.post("/users", UserController.create);
+router.get('/users/:id', usersController.findById);
+router.post('/users', usersController.create);
 
-export default userRouter;
+export default router;
