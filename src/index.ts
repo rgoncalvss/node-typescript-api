@@ -1,7 +1,9 @@
 import express from 'express';
-import userRouter from './routes/userRoutes';
-import bookRouter from './routes/bookRoutes';
 import { errorMiddleware } from './middlewares/errors';
+import { validateEnv } from './utils/validateEnv';
+import router from './routes/routes';
+
+validateEnv();
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,6 +17,5 @@ app.listen(PORT, () => {
 
 app.use(express.json());
 
-app.use('/api', userRouter);
-app.use('/api', bookRouter);
+app.use(router);
 app.use(errorMiddleware);

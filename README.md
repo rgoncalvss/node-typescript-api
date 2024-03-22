@@ -1,6 +1,6 @@
 # Library Book API
 
-Stacks: TypeScript, Express, PostgresSQL, PrismaORM.
+Stacks: TypeScript, Express, PostgresSQL, PrismaORM, Jest.
 
 ## Configuration
 
@@ -52,9 +52,9 @@ Middlewares
 
 - src/middlewares: Helps validate data and errors handling between requisitions.
 
-Models
+Repositories
 
-- src/models: Queries to the database (CRUD)
+- src/repositories: Queries to the database (CRUD)
 
 Routes
 
