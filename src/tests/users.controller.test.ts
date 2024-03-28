@@ -90,7 +90,7 @@ describe('usersController', () => {
         params: { userId: '1' },
         body: { id: '1' },
       } as unknown as Request;
-      const res: Response = { send: jest.fn() } as unknown as Response;
+      const res: Response = { json: jest.fn() } as unknown as Response;
 
       const bookMock = { id: 1, available: true };
       const userMock = { id: 1 };
@@ -102,7 +102,7 @@ describe('usersController', () => {
 
       await usersController.lend(req, res, jest.fn());
 
-      expect(res.send).toHaveBeenCalledWith({
+      expect(res.json).toHaveBeenCalledWith({
         msg: 'Book lent successfully!',
       });
     });
@@ -167,7 +167,7 @@ describe('usersController', () => {
   describe('return', () => {
     it('should return a book when it exists and is not available', async () => {
       const req: Request = { params: { id: '1' } } as unknown as Request;
-      const res: Response = { send: jest.fn() } as unknown as Response;
+      const res: Response = { json: jest.fn() } as unknown as Response;
 
       const bookMock = { id: 1, available: false };
 
@@ -176,7 +176,7 @@ describe('usersController', () => {
 
       await usersController.return(req, res, jest.fn());
 
-      expect(res.send).toHaveBeenCalledWith({
+      expect(res.json).toHaveBeenCalledWith({
         msg: 'Book returned successfully!',
       });
     });

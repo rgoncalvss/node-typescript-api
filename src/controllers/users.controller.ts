@@ -4,6 +4,7 @@ import { ErrorCode } from '../exceptions/root';
 import { NotFoundException } from '../exceptions/not-found';
 import usersRepository from '../repositories/UsersRepository';
 import booksRepository from '../repositories/BooksRepository';
+
 class UserController {
   async create(req: Request, res: Response, next: NextFunction) {
     const { email, name } = req.body;
@@ -77,7 +78,7 @@ class UserController {
       },
     });
 
-    res.send({ msg: 'Book lent successfully!' });
+    res.json({ msg: 'Book lent successfully!' });
   }
 
   async return(req: Request, res: Response, next: NextFunction) {
@@ -121,7 +122,7 @@ class UserController {
       });
     }
 
-    return res.send({ msg: 'Book returned successfully!' });
+    return res.json({ msg: 'Book returned successfully!' });
   }
 }
 
