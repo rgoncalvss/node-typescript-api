@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient, User as PrismaUser } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 import { IUser } from '../interfaces/user.interface';
 
 const prisma = new PrismaClient();
@@ -14,11 +14,8 @@ export class UsersRepository {
     return user;
   }
 
-  async update(user: IUser): Promise<IUser> {
-    const updatedUser = await prisma.user.update({
-      where: { id: user.id },
-      data: user,
-    });
+  async update(query: Prisma.UserUpdateArgs): Promise<IUser> {
+    const updatedUser = await prisma.user.update(query);
     return updatedUser;
   }
 
