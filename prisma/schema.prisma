@@ -22,6 +22,6 @@ model Book {
   title     String  @unique
   content   String?
   available Boolean @default(true)
-  customer    User?    @relation(fields: [customerId], references: [id])
+  customer    User? @relation(fields: [customerId], references: [id])
   customerId  Int?
 }
