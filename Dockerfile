@@ -3,16 +3,15 @@ FROM node:20.11.0
 
 WORKDIR /app
 
-COPY package*.json ./
-
 COPY .env ./
-
+COPY docker.env ./
+COPY package*.json ./
 COPY prisma/ ./prisma/
-
-COPY . .
 
 RUN npm install
 
-EXPOSE 3000
+COPY . .
 
-CMD ["npm", "run", "dev"]
+RUN npm run build
+
+CMD ["npm", "run", "start"]
