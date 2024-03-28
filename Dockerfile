@@ -1,5 +1,5 @@
-##Setting up the API to run on a container
-FROM node:20.11.0
+## Building Stage
+FROM node:20.11.0 AS builder
 
 WORKDIR /app
 
@@ -9,9 +9,14 @@ COPY package*.json ./
 COPY prisma/ ./prisma/
 
 RUN npm install
-
 COPY . .
-
 RUN npm run build
+
+## Running Stage
+FROM node:20.11.0-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app .
 
 CMD ["npm", "run", "start"]

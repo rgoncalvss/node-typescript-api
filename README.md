@@ -2,6 +2,8 @@
 
 Stacks: TypeScript, Express, PostgresSQL, PrismaORM, Jest.
 
+Endpoints: With swagger-autogen all endpoints will be available at your_api_url/api-docs.
+
 ## Configuration
 
 Set up the env file based on the .env.example.
@@ -14,10 +16,6 @@ $ npm install
 
 ```
 $ docker compose up --build -d
-```
-
-```
-$ npx prisma migrate dev --name init
 ```
 
 # Running the app
