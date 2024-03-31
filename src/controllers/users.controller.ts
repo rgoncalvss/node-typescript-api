@@ -12,8 +12,9 @@ class UserController {
     const userAlreadyExists = await usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
-      next(new BadRequestException('User already exists', ErrorCode.CONFLICT));
-      return;
+      return next(
+        new BadRequestException('User already exists', ErrorCode.CONFLICT),
+      );
     }
 
     const user = await usersRepository.create(email, name);
@@ -26,8 +27,7 @@ class UserController {
     const user = await usersRepository.findById(userId);
 
     if (!user) {
-      next(new NotFoundException('User not found', ErrorCode.NOT_FOUND));
-      return;
+      return next(new NotFoundException('User not found', ErrorCode.NOT_FOUND));
     }
 
     return res.json(user);
@@ -85,24 +85,21 @@ class UserController {
     const bookId = parseInt(req.params.id, 10);
 
     if (!bookId) {
-      next(
+      return next(
         new BadRequestException('Book Id is required', ErrorCode.BAD_REQUEST),
       );
-      return;
     }
 
     const book = await booksRepository.findById(bookId);
 
     if (!book) {
-      next(new NotFoundException('Book not found', ErrorCode.NOT_FOUND));
-      return;
+      return next(new NotFoundException('Book not found', ErrorCode.NOT_FOUND));
     }
 
     if (book.available) {
-      next(
+      return next(
         new BadRequestException('Book already returned', ErrorCode.CONFLICT),
       );
-      return;
     }
 
     if (!book.available) {

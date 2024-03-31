@@ -8,20 +8,20 @@ class BookController {
     const { title, available } = req.body;
 
     if (!title || !available) {
-      next(
+      return next(
         new BadRequestException(
           'Title and book availability are required',
           ErrorCode.BAD_REQUEST,
         ),
       );
-      return;
     }
 
     const bookAlreadyExists = await booksRepository.findByTitle(req.body.title);
 
     if (bookAlreadyExists) {
-      next(new BadRequestException('Book already exists', ErrorCode.CONFLICT));
-      return;
+      return next(
+        new BadRequestException('Book already exists', ErrorCode.CONFLICT),
+      );
     }
 
     const book = await booksRepository.create(req.body);
