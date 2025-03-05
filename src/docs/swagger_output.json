@@ -13,7 +13,9 @@
     }
   ],
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": [
+    "http"
+  ],
   "paths": {
     "/api/users/{id}": {
       "get": {

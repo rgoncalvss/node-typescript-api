@@ -1,4 +1,5 @@
-import swaggerAutogen from 'swagger-autogen';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const swaggerAutogen = require('swagger-autogen')();
 import 'dotenv/config';
 
 const doc = {
@@ -27,6 +28,4 @@ const doc = {
 const outputFile = './swagger_output.json';
 const routes = ['./src/routes/routes.ts'];
 
-swaggerAutogen()(outputFile, routes, doc).then(async () => {
-  await import('../index');
-});
+swaggerAutogen(outputFile, routes, doc);
