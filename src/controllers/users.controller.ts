@@ -19,7 +19,7 @@ class UserController {
 
     const user = await usersRepository.create(email, name);
 
-    res.json(user).status(201);
+    res.json(user);
   }
 
   async findById(req: Request, res: Response, next: NextFunction) {
