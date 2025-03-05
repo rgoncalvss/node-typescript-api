@@ -1,18 +1,19 @@
 // Book.ts
-import { Book, Prisma, PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 import { IBook } from '../interfaces/book.interface';
 
 const prisma = new PrismaClient();
 
 export class BooksRepository {
-  async create(bookToSave: IBook): Promise<IBook | any> {
+  async create(bookToSave: IBook) {
     const book = await prisma.book.create({
       data: { ...bookToSave, available: true },
     });
+
     return book;
   }
 
-  async return(bookId: number): Promise<Book | null> {
+  async return(bookId: number) {
     const book = await prisma.book.findUnique({
       where: { id: bookId },
     });
@@ -20,17 +21,19 @@ export class BooksRepository {
     return book;
   }
 
-  async update(query: Prisma.BookUpdateArgs): Promise<IBook | any> {
+  async update(query: Prisma.BookUpdateArgs) {
     const updatedBook = await prisma.book.update(query);
+
     return updatedBook;
   }
 
   async getAll() {
     const books = await prisma.book.findMany();
+
     return books;
   }
 
-  async findById(bookId: number): Promise<IBook | any> {
+  async findById(bookId: number) {
     const book = await prisma.book.findUnique({
       where: { id: bookId },
     });
@@ -38,10 +41,11 @@ export class BooksRepository {
     return book;
   }
 
-  async findByTitle(title: string): Promise<IBook | any> {
+  async findByTitle(title: string) {
     const book = await prisma.book.findUnique({
       where: { title },
     });
+
     return book;
   }
 }

@@ -11,7 +11,7 @@ jest.mock('../repositories/BooksRepository');
 
 describe('usersController', () => {
   describe('create', () => {
-    it("should create a new user when it doesn't exist already", async () => {
+    it('should create a new user when it doesnt exist already', async () => {
       const req: Request = {
         body: { email: 'test@example.com', name: 'Test User' },
       } as Request;
@@ -25,10 +25,7 @@ describe('usersController', () => {
 
       await usersController.create(req, res, jest.fn());
 
-      expect(usersRepository.create).toHaveBeenCalledWith(
-        'test@example.com',
-        'Test User',
-      );
+      expect(usersRepository.create).toHaveBeenCalledWith('test@example.com', 'Test User');
       expect(res.json).toHaveBeenCalledWith({
         email: 'test@example.com',
         name: 'Test User',

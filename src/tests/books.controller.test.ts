@@ -9,7 +9,7 @@ jest.mock('../repositories/BooksRepository');
 
 describe('BookController', () => {
   describe('create', () => {
-    it("should create a new book when it doesn't exist already", async () => {
+    it('should create a new book when it doesnt exist already', async () => {
       const req = {
         body: {
           title: 'New Book',

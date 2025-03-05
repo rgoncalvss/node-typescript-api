@@ -5,22 +5,11 @@ name: Node.js CI
 
 on:
   push:
-    branches: [$default-branch]
+    branches: [main]
   pull_request:
-    branches: [$default-branch]
+    branches: [main]
 
 jobs:
-  run-linter:
-    name: Run linter
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
-
   build:
     runs-on: ubuntu-latest
 
@@ -34,3 +23,4 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+      - run: npm run lint
