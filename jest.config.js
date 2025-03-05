@@ -1,6 +1,8 @@
-import { resolve } from 'path';
-const root = resolve(__dirname);
-export const rootDir = root;
+import path from 'node:path';
+
+const __dirname = path.resolve();
+
+export const rootDir = __dirname;
 export const displayName = 'root-tests';
 export const testMatch = ['<rootDir>/src/**/*.test.ts'];
 export const testEnvironment = 'node';
