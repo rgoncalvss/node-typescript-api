@@ -7,11 +7,11 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "dev": "ts-node-dev ./src/docs/swagger.ts && ts-node-dev ./src/index.ts",
+    "dev": "ts-node-dev --env-file=.env ./src/docs/swagger.ts && ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "start": "npx prisma migrate dev --name init && ts-node-dev ./src/docs/swagger.ts && node ./dist/index.js",
+    "start": "npx prisma migrate dev --name init && ts-node-dev --env-file=.env ./src/docs/swagger.ts && node ./dist/index.js",
     "test": "jest",
-    "swagger": "npx ts-node ./src/swagger.ts"
+    "swagger": "npx ts-node ./src/docs/swagger.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
     "@types/node": "^20.11.18",
     "@types/swagger-ui-express": "^4.1.6",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "envalid": "^8.0.0",
     "express": "^4.19.2",
     "express-validator": "^7.0.1",

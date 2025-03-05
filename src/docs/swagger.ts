@@ -1,4 +1,5 @@
 import swaggerAutogen from 'swagger-autogen';
+import 'dotenv/config';
 
 const doc = {
   info: {
@@ -6,6 +7,7 @@ const doc = {
     title: 'Library API Documentation',
     description: 'Loan/Return API',
   },
+  host: 'localhost:3000',
   servers: [
     {
       url: 'http://localhost:3000',
