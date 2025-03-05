@@ -9,19 +9,14 @@ class BookController {
 
     if (!title || !available) {
       return next(
-        new BadRequestException(
-          'Title and book availability are required',
-          ErrorCode.BAD_REQUEST,
-        ),
+        new BadRequestException('Title and book availability are required', ErrorCode.BAD_REQUEST),
       );
     }
 
     const bookAlreadyExists = await booksRepository.findByTitle(req.body.title);
 
     if (bookAlreadyExists) {
-      return next(
-        new BadRequestException('Book already exists', ErrorCode.CONFLICT),
-      );
+      return next(new BadRequestException('Book already exists', ErrorCode.CONFLICT));
     }
 
     const book = await booksRepository.create(req.body);
@@ -31,6 +26,7 @@ class BookController {
 
   async getAll(req: Request, res: Response) {
     const books = await booksRepository.getAll();
+
     return res.json(books);
   }
 }

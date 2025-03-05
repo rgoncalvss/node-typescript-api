@@ -3,9 +3,9 @@ import { HttpException } from '../exceptions/root';
 
 export function errorMiddleware(
   error: HttpException,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction,
+  _next: NextFunction,
 ) {
   res.status(error.statusCode).send({
     message: error.message,

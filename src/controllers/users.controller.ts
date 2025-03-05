@@ -12,9 +12,7 @@ class UserController {
     const userAlreadyExists = await usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
-      return next(
-        new BadRequestException('User already exists', ErrorCode.CONFLICT),
-      );
+      return next(new BadRequestException('User already exists', ErrorCode.CONFLICT));
     }
 
     const user = await usersRepository.create(email, name);
@@ -38,12 +36,7 @@ class UserController {
     const userId = parseInt(req.params.userId, 10);
 
     if (!userId || !bookId) {
-      return next(
-        new BadRequestException(
-          'Book and User Id are required',
-          ErrorCode.BAD_REQUEST,
-        ),
-      );
+      return next(new BadRequestException('Book and User Id are required', ErrorCode.BAD_REQUEST));
     }
 
     const book = await booksRepository.findById(bookId);
@@ -58,9 +51,7 @@ class UserController {
     }
 
     if (!book.available) {
-      return next(
-        new BadRequestException('Book already lent', ErrorCode.CONFLICT),
-      );
+      return next(new BadRequestException('Book already lent', ErrorCode.CONFLICT));
     }
 
     await booksRepository.update({
@@ -85,9 +76,7 @@ class UserController {
     const bookId = parseInt(req.params.id, 10);
 
     if (!bookId) {
-      return next(
-        new BadRequestException('Book Id is required', ErrorCode.BAD_REQUEST),
-      );
+      return next(new BadRequestException('Book Id is required', ErrorCode.BAD_REQUEST));
     }
 
     const book = await booksRepository.findById(bookId);
@@ -97,9 +86,7 @@ class UserController {
     }
 
     if (book.available) {
-      return next(
-        new BadRequestException('Book already returned', ErrorCode.CONFLICT),
-      );
+      return next(new BadRequestException('Book already returned', ErrorCode.CONFLICT));
     }
 
     if (!book.available) {

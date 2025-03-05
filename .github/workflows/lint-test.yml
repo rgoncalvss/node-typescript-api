@@ -10,17 +10,6 @@ on:
     branches: [main]
 
 jobs:
-  run-linter:
-    name: Run linter
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
-
   build:
     runs-on: ubuntu-latest
 

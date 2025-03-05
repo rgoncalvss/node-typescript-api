@@ -21,5 +21,6 @@ app.use(router);
 app.use(errorMiddleware);
 
 app.listen(PORT, HOSTNAME, () => {
+  // eslint-disable-next-line no-console
   console.log(`Servidor rodando com sucesso ${HOSTNAME}:${PORT}`);
 });
